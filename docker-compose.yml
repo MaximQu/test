@@ -1,0 +1,38 @@
+services:
+  frontend:
+    image: caddy:alpine
+    container_name: frontend
+    ports:
+      - "8989:8989"  # Expose Caddy's port 80
+    volumes:
+      - ./frontend/dist:/usr/share/caddy  # Serve frontend files
+      - ./Caddyfile:/etc/caddy/Caddyfile  # Use custom Caddyfile for configuration
+    depends_on:
+      - backend
+    env_file:
+      - ./frontend/.env
+    environment:
+      - BACKEND_PORT=${PORT}  # Define environment variable for backend URL
+  backend:
+    build: ./backend
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      - PORT=${PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:${DB_PORT}

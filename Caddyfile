@@ -1,0 +1,6 @@
+:8989 {
+    root * /usr/share/caddy
+    file_server
+
+    reverse_proxy /api/* http://backend:{$BACKEND_PORT}
+}
