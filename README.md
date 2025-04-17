@@ -2,7 +2,7 @@
 
 ## Features
 
-- **Backend:** Nest.js (with REST API and GraphQL support)
+- **Backend:** Nest.js (with REST API)
 - **Frontend:** React (using Vite.js for fast builds and hot-reloading)
 - **Database:** PostgreSQL (with Docker support)
 - **TypeScript:** Fully typed codebase for better maintainability and fewer runtime errors

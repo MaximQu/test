@@ -15,5 +15,9 @@
     "concurrently": "^7.x",
     "react-router-dom": "^7.5.0",
     "rimraf": "^5.x"
+  },
+  "dependencies": {
+    "@railway/cli": "^4.0.0",
+    "g": "^2.0.1"
   }
 }

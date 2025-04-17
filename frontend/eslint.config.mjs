@@ -25,6 +25,8 @@ export default tseslint.config(
       "eslint.config.js",
       "eslint.config.mjs",
       "jest.config.js",
+      "tailwind.config.js",
+      "postcss.config.js"
     ],
   },
   js.configs.recommended,
@@ -60,9 +62,7 @@ export default tseslint.config(
         { namedComponents: "arrow-function" },
       ],
       "react/self-closing-comp": ["error", { component: true, html: true }],
-      "max-lines": ["warn", { max: 124 }],
-      "max-params": ["error", 3],
-      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "no-console": ["error"],
     },
   },
 );
